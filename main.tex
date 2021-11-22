@@ -1,0 +1,69 @@
+\documentclass[oneside]{memoir}
+% LTeX: enabled=false
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{ex}{}[chapter]
+\renewcommand{\theex}{\textnormal{\arabic{ex}}}
+
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+
+\include{commands}
+
+\usepackage{minted}
+
+\setlrmarginsandblock{3cm}{2.5cm}{*}
+\setulmarginsandblock{2.5cm}{2.5cm}{*}
+\checkandfixthelayout
+
+\title{Unofficial Solution Guide to Larry Wasserman's \\
+      ``All of Statistics''}
+\author{Solutions by Darko Trifunovski}
+\date{November 21, 2021}
+% LTeX: enabled=true
+
+\begin{document}
+
+\frontmatter
+\begin{titlingpage}
+  \maketitle
+\end{titlingpage}
+\tableofcontents
+
+\mainmatter
+\part{Probability}
+\include{part1/ch01}
+\include{part1/ch02}
+\include{part1/ch03}
+\include{part1/ch04}
+\include{part1/ch05}
+
+\part{Statistical Inference}
+\include{part2/ch06}
+\include{part2/ch07}
+\include{part2/ch08}
+\include{part2/ch09}
+\include{part2/ch10}
+\include{part2/ch11}
+\include{part2/ch12}
+
+\part{\,Statistical Models and Methods}
+\include{part3/ch13}
+\include{part3/ch14}
+\include{part3/ch15}
+\include{part3/ch16}
+\include{part3/ch17}
+\include{part3/ch18}
+\include{part3/ch19}
+\include{part3/ch20}
+\include{part3/ch21}
+\include{part3/ch22}
+\include{part3/ch23}
+\include{part3/ch24}
+
+\end{document}

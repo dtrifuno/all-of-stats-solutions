@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.pdf
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex*
+_minted-main/
