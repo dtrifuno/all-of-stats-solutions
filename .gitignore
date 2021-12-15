@@ -5,4 +5,5 @@
 *.fdb_latexmk
 *.fls
 *.synctex*
+*.ipynb
 _minted-main/

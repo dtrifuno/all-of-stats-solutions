@@ -8,5 +8,6 @@
   },
   "ltex.latex.environments": {
     "minted": "ignore"
-  }
+  },
+  "python.formatting.provider": "black"
 }
