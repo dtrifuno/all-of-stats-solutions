@@ -3,11 +3,12 @@
 \begin{ex}
   Consider $B_i$ and $B_j$ with $i<j$. Suppose $x\in B_i$ and note that then
   $x\not\in B_j$, since by definition
-  $$
-    B_j=\left\{\omega\in\Omega\mid
+  \[
+    B_j
+    =\left\{\omega\in\Omega\mid
     \omega\in A_j,\omega\not\in A_{j-1},\ldots,
     \omega\not\in A_{i}\ldots,\omega\not\in A_{1}\right\}.
-  $$
+  \]
   Therefore, $B_i\cap B_j=\emptyset$.
 
   Since the sequence of $A_i$'s is monotone increasing, it is clear that
@@ -187,12 +188,12 @@
   $\bigcup_{n=1}^\infty A_n= \bigcup_{n=1}^\infty B_n$.
 
   Thus,
-  $$
-    \P{\bigcup_{n=1}^\infty A_n}=
-    \P{\bigsqcup_{n=1}^\infty B_n}
+  \[
+    \P{\bigcup_{n=1}^\infty A_n}
+    =\P{\bigsqcup_{n=1}^\infty B_n}
     =\sum_{n=1}^\infty \P{B_n}
     \leq \sum_{n=1}^\infty \P{A_n},
-  $$
+  \]
   since $B_n\subset A_n$ for all $n$.
 \end{ex}
 
@@ -449,18 +450,18 @@
 
 \begin{ex}
   We use Python with NumPy and Seaborn to generate the required graphs.
-  \inputminted{python}{./src/01-21.py}
+  \inputminted{python}{src/01-21.py}
 
   \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{part1/01-21a}
+    \includegraphics[scale=0.7]{part1/ch01-21a}
     \caption{Proportion of heads as a function of the number of coin flips for
       $p_\text{heads}=0.3$.}
   \end{figure}
 
   \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{part1/01-21b}
+    \includegraphics[scale=0.7]{part1/ch01-21b}
     \caption{Proportion of heads as a function of the number of coin flips for
       $p_{heads}=0.03$.}
   \end{figure}
@@ -469,7 +470,7 @@
 
 \begin{ex}
   Running the following Python code
-  \inputminted{python}{./src/01-22.py}
+  \inputminted{python}{src/01-22.py}
   produces the output
   \begin{verbatim}
 Flips  Expected  Actual
@@ -481,7 +482,7 @@ Flips  Expected  Actual
 
 \begin{ex}
   Running
-  \inputminted{python}{./src/01-23.py}
+  \inputminted{python}{src/01-23.py}
   produces
   \begin{verbatim}
 A = [2, 4, 6], B = [1, 2, 3, 4], AB = [2, 4]
@@ -497,8 +498,8 @@ expected P(AB) if independent = 0.444
 actual P(AB) = 0.3333
 \end{verbatim}
 
-  In the case of $A=\{2, 4, 6\}$ and $B=\{1, 2, 3, 4\}$, the theoretical values are
-  $\P{A}=\frac{1}{2}$, $\P{B}=\frac{2}{3}$ and $\P{AB}=\frac{1}{3}$.
+  In the case of $A=\{2, 4, 6\}$ and $B=\{1, 2, 3, 4\}$, the theoretical values
+  are $\P{A}=\frac{1}{2}$, $\P{B}=\frac{2}{3}$ and $\P{AB}=\frac{1}{3}$.
 
   For $A=\{1, 2, 3, 4\}$ and $B=\{3, 4, 5, 6\}$, the theoretical values are
   $\P{A}=\frac{2}{3}$, $\P{B}=\frac{2}{3}$ and $\P{AB}=\frac{1}{3}$.

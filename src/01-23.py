@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def test_independence(a_arr, b_arr, n, seed=0):
+def test_independence(a_arr, b_arr, n, seed=42):
     rng = np.random.default_rng(seed)
     roll = rng.integers(1, 7, n)
     a_count = np.count_nonzero(np.isin(roll, a_arr))
