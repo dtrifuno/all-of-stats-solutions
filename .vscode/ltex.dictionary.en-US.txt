@@ -1,3 +1,6 @@
 Seaborn
 integrand
 Fubini
+quadratically
+Chebyshev
+Hoeffding
