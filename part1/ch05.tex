@@ -1,49 +1,418 @@
 \chapter{Convergence of Random Variables}
 
+% 1
 \begin{ex}
+  \begin{enumerate}[(a)]
+    \item[]
+    \item Note that since
+          \begin{align*}
+            \E{\overline{X}_n}
+             & =\E{\frac{1}{n}\sum_{i=1}^n X_i}
+            =\frac{1}{n}\sum_{i=1}^n \E{X_i}
+            =\mu,                                 \\
+            \var{\overline{X}_n}
+             & =\var{\frac{1}{n}\sum_{i=1}^n X_i}
+            =\frac{1}{n^2}\sum_{i=1}^n \var{X_i}
+            =\frac{\sigma^2}{n},
+          \end{align*}
+          we have
+          \begin{align*}
+            \E{S_n^2}
+             & =\E{\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X}_n)^2}                                                           \\
+             & =\frac{1}{n-1}\E{\sum_{i=1}^n\left[X_i^2-2X_i\overline{X}_n+\overline{X}_n^2\right]}                           \\
+             & =\frac{1}{n-1}\E{\sum_{i=1}^n X_i^2-2\left(\sum_{i=1}^n X_i\right)\overline{X}_n+\sum_{i=1}^n\overline{X}_n^2} \\
+             & =\frac{1}{n-1}\E{\sum_{i=1}^nX_i^2-2n\overline{X}_n^2+n\overline{X}_n^2}                                       \\
+             & = \frac{n}{n-1}\left(\E{X_1^2}-\E{\overline{X}_n^2}\right)                                                     \\
+             & = \frac{n}{n-1}\left(\var{X_1}+\E{X_1}^2-\var{\overline{X}_n}-\E{\overline{X}_n}^2\right)                      \\
+             & = \frac{n}{n-1}\left(\sigma^2+\mu^2-\frac{\sigma^2}{n}-\mu^2 \right)                                           \\
+             & =\sigma^2.
+          \end{align*}
+    \item We have
+          \begin{align*}
+            S^2
+             & =\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X}_n)^2                                  \\
+             & =\frac{1}{n-1}\left(\sum_{i=1}^nX_i^2-2n\overline{X}_n^2+n\overline{X}_n^2\right) \\
+             & =\frac{n}{n-1}n^{-1}\sum_{i=1}^nX_i^2-\frac{n}{n-1}\overline{X}_n^2,
+          \end{align*}
+          where $\frac{n}{n-1}\to 1$ as $n\to\infty$. Note that then
+          $\overline{X}_n\to \mu$ in probability by the law of large numbers,
+          and therefore by Theorem 5.5, part (d), $\overline{X}_n^2\to \mu^2$
+          in probability. Likewise, we can apply the law of large numbers to
+          conclude that $n^{-1}\sum_{i=1}^nX_i^2\xrightarrow{P} \E{X_1^2}$
+          where $\E{X_1^2}=\sigma^2+\mu^2$. Combining all of these results, it
+          follows that
+          \[
+            S^2\xrightarrow{P}\sigma^2+\mu^2-\mu^2=\sigma^2.
+          \]
+  \end{enumerate}
 \end{ex}
 
 \begin{ex}
+  Note that
+  \begin{align*}
+    \E{[X_n-b]^2}
+     & =\E{X_n^2-2bX+b^2}                   \\
+     & =\var{X_n}+\E{X_n}^2-2b\E{X}+b^2     \\
+     & =\var{X_n}+\left[\E{X_n}-b\right]^2.
+  \end{align*}
+  If $\var{X_n}\to 0$ and $\E{X_n}\to b$, as
+  $n\to \infty$, it follows that $\E{[X_n-b]^2}\to 0$ as well and hence
+  $X_n$ converges to $b$ in quadratic mean.
+
+  Conversely, if $\E{[X_n-b]^2}\to 0$ as $n\to\infty$ it follows that
+  \[
+    0=\lim_{n\to\infty}\left(\var{X_n}+\left[\E{X_n}-b\right]^2\right),
+  \]
+  or, since both summands are non-negative, that
+  \[
+    \lim_{n\to\infty}\var{X_n}=0,\text{ and }
+    \lim_{n\to\infty}\left[\E{X_n}-b\right]^2=0.
+  \]
+  If $\lim_{n\to\infty}\left[\E{X_n}-b\right]^2=0$, however, it follows that
+  $\lim_{n\to\infty}\E{x_n}=b$.
 \end{ex}
 
 \begin{ex}
+  Let $\var{X_i}=\sigma^2$. Let $Y_i=X_i-\mu$. Note that then
+  \[
+    \mu_Y=\E{Y_i}=\E{X_i-\mu}=0,
+  \]
+  \[
+    \sigma^2_Y=\var{Y_i}=\var{X_i-\mu}=\sigma^2,
+  \]
+  \begin{align*}
+    \E{(\overline{X}_n-\mu)^2}
+     & =\E{\frac{1}{n}\left[\sum_{i=1}^n(X_i-\mu)\right]^2}            \\
+     & =\frac{1}{n^2}\E{\left(\sum_{i=1}^n Y_i\right)^2}               \\
+     & =\frac{1}{n^2}\E{\sum_{i=1}^n Y_i^2 +
+      \sum_{j=1}^n\sum_{\substack{k=1                                  \\ j\neq k}}^n Y_jY_k} \\
+     & =\frac{1}{n^2}\left[n(\sigma_Y^2+\mu_Y^2)+n(n-1)\mu_Y^2 \right] \\
+     & =\frac{\sigma^2}{n},
+  \end{align*}
+  and $\E{(\overline{X}_n-\mu)^2}\to 0$ as $n\to\infty$. Therefore,
+  $\overline{X}_n$ converges to $\mu$ in quadratic mean.
 \end{ex}
 
 \begin{ex}
+  Fix an $\epsilon>0$. Note that for any random variable $X$,
+  \begin{align*}
+    \lim_{n\to\infty}\P{|X_n-X|>\epsilon}
+     & =\lim_{n\to\infty}\left[\P{\left|\frac{1}{n}-X\right|>\epsilon}\P{X_n=\frac{1}{n}}
+      +\P{|n-X|>\epsilon}\P{X_n=n}\right]                                                    \\
+     & =\lim_{n\to\infty}\P{\left|\frac{1}{n}-X\right|>\epsilon}\left(1-\frac{1}{n^2}\right)
+    +\lim_{n\to\infty}\P{|n-X|>\epsilon}\frac{1}{n^2}                                        \\
+     & =\P{|X|>\epsilon},
+  \end{align*}
+  and thus, $X_n$ converges to $X$ in probability if and only if $X$ is a point
+  mass at $0$.
+
+  Recall that if $X_n$ converges in quadratic mean to $X$, by Theorem 5.4,
+  $X_n$ also converges to $X$ in probability. However, we know that $X_n$
+  only converges to $0$ in probability, and thus it suffices to check whether
+  $X_n$ converges to $0$ in quadratic mean as well. Since
+  \begin{align*}
+    \lim_{n\to\infty}\E{(X_n-0)^2}
+     & =\lim_{n\to\infty}\E{X_n^2}                                                              \\
+     & =\lim_{n\to\infty}\left[\frac{1}{n^2}\P{X_n=\frac{1}{n}}+n^2\P{X_n=n}\right]             \\
+     & =\lim_{n\to\infty}\left[\frac{1}{n^2}\left(1-\frac{1}{n^2}\right)+\frac{n^2}{n^2}\right] \\
+     & =\lim_{n\to\infty}\left[1+\frac{1}{n^2}-\frac{1}{n^4}\right]                             \\
+     & = 1,
+  \end{align*}
+  $X_n$ does not converge in quadratic mean.
+\end{ex}
+
+% 5
+\begin{ex}
+  First, note that if $X_i$ is a Bernoulli random variable, $X_i^2=X_i$. Next,
+  recall that by Theorem 5.4, if a sequence of random variables converges to a
+  distribution in quadratic mean, it converges to the same distribution in
+  probability as well. Thus, it suffices to establish convergence in quadratic
+  mean. However,
+  \begin{align*}
+    \E{\left[\frac{1}{n}\sum_{i=1}^nX_i^2 -p\right]^2}
+     & =\frac{1}{n^2}\E{\left[\sum_{i=1}^n(X_i -p)\right]^2}                   \\
+     & =\frac{1}{n^2}\E{\sum_{i=1}^n(X_i-p)^2 +\sum_{j=1}^n\sum_{\substack{k=1 \\ j\neq k}}^n (X_j-p)(X_k-p)} \\
+     & =\frac{1}{n^2}\E{\sum_{i=1}^n(X_i-\E{X_i})^2}                           \\
+     & =\frac{1}{n^2}\left[n\left(\var{X_1} \right) \right]                    \\
+     & =\frac{p(1-p)}{n},
+  \end{align*}
+  which converges to $0$ as $n$ goes to infinity.
 \end{ex}
 
 \begin{ex}
+  Let $\overline{X}$ be the average height of the $100$ random men. By the
+  central limit theorem, we know that we can approximate $\overline{X}$ by $Y$,
+  an $N(68, 2.6^2/100)$ distribution. Hence,
+  \begin{align*}
+    \P{\overline{X}\geq 72}
+    \approx \P{Y\geq 72}
+    = \P{\frac{Y-68}{0.26}\geq 15.385}
+    =1-\Phi(15.385)
+    \approx 0.
+  \end{align*}
+
+  \noindent
+  \textit{Note: In the second printing of the book, the problem asks for the
+    probability that the average height of the men will be at least 68 inches.
+    This is trivial, since that is also the population mean. The problem is
+    corrected in the errata on the author's website to 72 inches instead. }
 \end{ex}
 
 \begin{ex}
+  Let $\lambda_n=1/n$ for $n=1,2,\ldots$. Let
+  $X_n\sim\text{Poisson}(\lambda_n)$. Then
+  \begin{enumerate}
+    \item Fix an $\epsilon>0$. Then,
+          \begin{align*}
+            \lim_{n\to\infty}\P{|X_n|>\epsilon}
+             & \leq \lim_{n\to\infty}\P{|X_n|>\min\{\epsilon, 1\}} \\
+             & =1-\lim_{n\to\infty}\P{X_n=0}                       \\
+             & =1-\lim_{n\to\infty}e^{-1/n}                        \\
+             & =0.
+          \end{align*}
+    \item Let $Y_n=nX_n$. Then, for $\epsilon>0$,
+          \[
+            \lim_{n\to\infty}\P{|Y_n|>\epsilon}
+            \leq 1-\lim_{n\to\infty}\P{Y_n=0}
+            =1-\lim_{n\to\infty}e^{-1/n}
+            =0.
+          \]
+  \end{enumerate}
 \end{ex}
 
 \begin{ex}
+  Recall that the variance of a Poisson distribution is equal to its mean. By
+  the central limit theorem, we can approximate
+  $\frac{1}{n}\sum_{i=1}^n X_i$ by an $N(1, 1/n)$ distribution, and therefore
+  can approximate $Y$ by an $N(n, n)$ distribution. Hence,
+  \[
+    \P{Y<90}
+    =\P{Z<\frac{90-n}{\sqrt{n}}}
+    =\P{Z<-1}
+    \approx 0.15865.
+  \]
 \end{ex}
 
 \begin{ex}
+  Let $0<\epsilon<e$. Note that
+  \[
+    \P{X-X_n=x}=\begin{cases}
+      \frac{n-1}{n} & x=0,     \\
+      \frac{1}{n}   & x=e^{n},
+    \end{cases}
+  \]
+  and that therefore
+  \[
+    \P{|X_n-X|>\epsilon}=1/n,
+  \]
+  which goes to $0$ as $n$ goes to infinity. Hence, $X_n$ converges to $X$ in
+  probability. By Theorem 5.4 it follows that $X_n$ converges to $X$ in
+  distribution as well.
+
+  Finally, note that
+  \[
+    \E{(X-X_n)^2}=\frac{e^{2n}}{n},
+  \]
+  which does not converge to $0$ as $n\to\infty$. Therefore, $X_n$ does not
+  converge to $X$ in quadratic mean.
+\end{ex}
+
+% 10
+\begin{ex}
+  Note that
+  \[
+    \P{|Z|>t}
+    =\P{|Z|^k>t^k}
+    \leq \frac{\E{|Z|^k}}{t^k}
+  \]
+  by applying Markov's inequality to $|Z|^k$. We proved that $\E{|Z|^k}$
+  exists for any non-negative integer $k$ in Exercise 4.6, and note that we can
+  extend this to all $k>0$, since
+  \begin{align*}
+    \E{|Z|^k}
+     & =\int_0^\infty\! 2z^k \phi(z)\,\d{z}                      \\
+     & \leq \int_0^1\! 2z^{\lfloor k\rfloor} \phi(z)\,\d{z}
+    + \int_1^\infty\! 2z^{\lceil k\rceil} \phi(z)\,\d{z}         \\
+     & \leq \int_0^\infty\! 2z^{\lfloor k\rfloor} \phi(z)\,\d{z}
+    + \int_0^\infty\! 2z^{\lceil k\rceil} \phi(z)\,\d{z}         \\
+     & =\E{|Z|^{\lfloor k\rfloor}} + \E{|Z|^{\lceil k\rceil}}.
+  \end{align*}
+
+  By Mill's inequality,
+  \[
+    \P{|Z|>t}\leq \sqrt{\frac{2}{\pi}}\frac{e^{-t^2/2}}{t}.
+  \]
+
+  Note that this bound is $O(e^{-t^2/2}/t)$ instead of $O(t^{-k})$ and that
+  therefore, for $t$ sufficiently large, it provides a tighter bound.
 \end{ex}
 
 \begin{ex}
+  To show convergence in distribution, note that $Y_n=\sqrt{n} X_n$ is a
+  standard normal random variable, and that therefore
+  \[
+    F_{X_n}(x)=F_{Y_n}(\sqrt{n} x)=\Phi(\sqrt{n} x),
+  \]
+  and so
+  \[
+    \lim_{n\to\infty} F_{X_n}(x)
+    =\lim_{n\to\infty} \Phi(\sqrt{n}x)
+    =\begin{cases}
+      0 & x < 0,   \\
+      1 & x\geq 0.
+    \end{cases}
+  \]
+
+  To show convergance in probability, fix an $\epsilon>0$. Then
+  \begin{align*}
+    \P{|X_n-X|>\epsilon}
+     & \leq \P{|X_n|+|X|>\epsilon}                                      \\
+     & \leq \P{|X_n|>\epsilon/2}+\P{|X|>\epsilon/2}                     \\
+     & = 1 - \P{-\epsilon/2\leq X_n\leq \epsilon/2}
+    + 1 - \P{-\epsilon/2\leq X\leq \epsilon/2}                          \\
+     & =1-\left[\Phi\left(n\epsilon/2\right)-\Phi(-n\epsilon/2)\right]
+    +1 - F(\epsilon/2) + F(-\epsilon/2)                                 \\
+     & =1-\left[\Phi\left(n\epsilon/2\right)-\Phi(-n\epsilon/2)\right],
+  \end{align*}
+  which goes to $0$ as $n$ goes to infinity since the expression between the
+  square brackets is the probability that a standard normal random variable is
+  between $-\sqrt{n}\epsilon/2$ and $\sqrt{n}\epsilon/2$. Thus, $X_n$ converges
+  to $X$ in probability.
+
 \end{ex}
 
 \begin{ex}
+  Let $X,X_1,X_2,\ldots$ be random variables that are positive and integer
+  valued. Let $F$ be the CDF of $X$ and $F_i$ the CDF of $X_i$. Suppose that
+  $X_n\rightsquigarrow X$. Then
+  \begin{align*}
+    \lim_{n\to\infty}\P{X_n=k}
+     & =\lim_{n\to\infty}\left[F_n(k)-F_n(k-1)\right]     \\
+     & =\lim_{n\to\infty}F_n(k)-\lim_{n\to\infty}F_n(k-1) \\
+     & =F(k) - F(k-1)                                     \\
+     & =\P{X=k}.
+  \end{align*}
+
+  Conversely, suppose that
+  \[
+    \lim_{n\to\infty}\P{X_n=k}=\P{X=k},
+  \]
+  for all $k$. Then, for $k$ a positive integer,
+  \begin{align*}
+    \lim_{n\to\infty} F_n(k)
+     & =\lim_{n\to\infty}\sum_{i=1}^k \P{X_n=k} \\
+     & =\sum_{i=1}^k\lim_{n\to\infty} \P{X_n=k} \\
+     & =\sum_{i=1}^k \P{X=k}                    \\
+     & =F(k),
+  \end{align*}
+  and, since the random variables can only take on positive integer values, it
+  follows that $X_n\rightsquigarrow X$.
 \end{ex}
 
 \begin{ex}
+  Note that
+  \begin{align*}
+    \P{X_n\leq x}
+     & =\P{n\min\{Z_1,\ldots, Z_n\}\leq x}              \\
+     & =\P{\min\{Z_1,\ldots, Z_n\}\leq x/n}             \\
+     & =1 - \P{Z_1>x/n}\cdots\P{Z_n> x/n}               \\
+     & =1-\left(1-\int_{0}^{x/n}\!f(t)\,\d{t}\right)^n,
+  \end{align*}
+  where the lower limit of immigration follows from the fact that $\P{Z_i>0}=1$.
+  Let $F(x)=\int_0^x\!f(t)\,\d{t}$ and note that then
+  \begin{align*}
+    \lim_{n\to\infty}\P{X_n\leq x}
+     & =1-\lim_{n\to\infty}\left[1-F\left(\frac{x}{n}\right)\right]^n \\
+     & =1-\lim_{n\to\infty}\left[1-F(0)-F'(0)\left(\frac{x}{n}\right)
+      -h\left(\frac{x}{n}\right)\left(\frac{x}{n}\right)\right]^n
+     & (\text{Taylor's theorem})                                      \\
+     & =1-\lim_{n\to\infty}\left[\left(1-\frac{\lambda x}{n}\right)
+      -h\left(\frac{x}{n}\right)\left(\frac{x}{n}\right)\right]^n     \\
+     & =1-\lim_{n\to\infty}\left(1-\frac{\lambda x}{n}\right)^n,
+  \end{align*}
+  by binomial expansion and using the fact that the $h(x)$ error term from
+  Taylor's theorem goes to $0$ as $x$ goes to $0$.
+
+  Finally, taking the limit gives us
+  \begin{align*}
+    \lim_{n\to\infty}\P{X_n\leq x}=1-e^{-\lambda x},
+  \end{align*}
+  the CDF of an $\text{Exponential}(\lambda)$ distribution.
 \end{ex}
 
 \begin{ex}
+  Let $X_1,\ldots,X_n\sim\text{Uniform(0,1)}$. Then
+  \[
+    \sqrt{12n}(\overline{X}_n - 1/2) \rightsquigarrow N(0,1)
+  \]
+  by the central limit theorem. Note that $g(x)=x^2$ is a differentiable
+  function with $g'(x)=2x$. Therefore, $g'(\mu)=1\neq 0$ and thus it follows by
+  the delta method,
+  \[
+    \sqrt{12n}\left(\overline{X}_n^2-\frac{1}{4}\right)
+    \rightsquigarrow N(0, 1),
+  \]
+  i.e.\ that
+  \[
+    \overline{X}_n^2\approx N\left(\frac{1}{4}, \frac{1}{12n}\right).
+  \]
+\end{ex}
+
+% 15
+\begin{ex}
+  Let $g(y)=y_1/y_2$ and note than then
+  \[
+    \nabla g(y) = \begin{pmatrix}
+      1/y_2 \\ -y_1/y_2^2
+    \end{pmatrix}.
+  \]
+  By the multivariate central limit theorem, we have
+  \[
+    \sqrt{n}\left[\begin{pmatrix}
+        \overline{X}_{1} \\ \overline{X}_{2}
+      \end{pmatrix}-\begin{pmatrix}
+        \mu_1 \\ \mu_2
+      \end{pmatrix}\right]\sim N(0, \Sigma),
+  \]
+  and therefore it follows by the multivariate delta method that
+  \[
+    \sqrt{n}\left(
+    \overline{X}_{1}/\overline{X}_{2} - \mu_1/\mu_2
+    \right)\sim N(0, \nabla^T_\mu\Sigma\nabla_\mu),
+  \]
+  where
+  \[
+    \nabla^T_\mu\Sigma\nabla_\mu
+    =\begin{pmatrix}
+      \mu_2^{-1} & -\mu_1\mu_2^{-2} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+      \sigma_{11} & \sigma_{12} \\
+      \sigma_{12} & \sigma_{22}
+    \end{pmatrix}
+    \begin{pmatrix}
+      \mu_2^{-1} \\ -\mu_1\mu_2^{-2}
+    \end{pmatrix}
+    =\mu_2^{-1}\sigma_{11}
+    -2\mu_1\mu_2^{-3}\sigma_{12}
+    +\mu_1^2\mu_2^{-4}\sigma_{22}.
+  \]
+  Therefore,
+  \[
+    \overline{X}_{1}/\overline{X}_{2}\approx
+    N(\mu_1/\mu_2,
+    \mu_2^{-1}\sigma_{11}
+    -2\mu_1\mu_2^{-3}\sigma_{12}
+    +\mu_1^2\mu_2^{-4}\sigma_{22}.
+    ).
+  \]
 \end{ex}
 
 \begin{ex}
-\end{ex}
-
-\begin{ex}
-\end{ex}
-
-\begin{ex}
-\end{ex}
-
-\begin{ex}
+  Let $X_1, X_2, \ldots$ be a sequence of random variables such that
+  $X_n\sim N(0, 1)$ and let $Y_n=-X_n$ for all $n$. Note that since the standard
+  normal distribution is symmetric about the origin, $Y_n\sim N(0, 1)$. Hence,
+  both $X_n$ and $Y_n$ converge in distribution to an $N(0, 1)$ distribution,
+  and thus $X + Y=N(0, 2)$, but since $X_n+Y_n=X_n+(-X_n)=0$,
+  $X_n+Y_n\rightsquigarrow 0$.
 \end{ex}
