@@ -1,0 +1,2 @@
+{"rule":"ALL_MOST_SOME_OF_NOUN","sentence":"^\\QSolutions to \"All of Statistics\"\\E$"}
+{"rule":"ALL_MOST_SOME_OF_NOUN","sentence":"^\\QSolutions to Larry Wasserman's \"All of Statistics\"\\E$"}

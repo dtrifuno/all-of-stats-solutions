@@ -1,0 +1,2 @@
+> Standard error using the delta method: 0.5576
+> Standard error using parametric bootstrap: 0.565

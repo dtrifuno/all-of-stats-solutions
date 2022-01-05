@@ -1,0 +1,119 @@
+\chapter{Models, Statistical Inference and Learning}
+
+\begin{ex}
+  Let $X_1,\ldots,X_n\sim\text{Poisson}(\lambda)$ and let
+  $\widehat{\lambda}=n^{-1}\sum_{i=1}^nX_i$. Then
+  \[
+    \bias{\widehat{\lambda}}
+    =\E{n^{-1}\sum_{i=1}^nX_i}-\lambda
+    =n^{-1}\sum_{i=1}^n\E{X_i}-\lambda
+    =0,
+  \]
+  \[
+    \var{\widehat{\lambda}}
+    =\var{\frac{1}{n}\sum_{i=1}^n X_i}
+    =\frac{1}{n^2}\sum_{i=1}^n \var{X_i}
+    =\frac{n\lambda}{n^2}=\frac{\lambda}{n},
+  \]
+  and therefore
+  \[
+    \se(\widehat{\lambda})
+    =\sqrt{\frac{\lambda}{n}},
+  \]
+  and
+  \[
+    \mse{\widehat{\lambda}}=
+    0+\var{\widehat{\lambda}}=\frac{\lambda}{n}.
+  \]
+\end{ex}
+
+\begin{ex}
+  Let $X_1,\ldots,X_n\sim\text{Uniform}(0,\theta)$ and let
+  $\widehat{\theta} = \max\{X_1,\ldots, X_n\}$. Note that
+  \[
+    \P{\max\{X_1,\ldots,X_n\}\leq x}
+    =\P{X_1\leq x}\cdots\P{X_n\leq x}
+    =x^n/\theta^n
+  \]
+  for $0\leq x\leq\theta$.
+
+  Therefore,
+  \[
+    f_{\widehat{\theta}}(x)
+    =\begin{cases}
+      nx^{n-1}/\theta^n & 0\leq x\leq 1,    \\
+      0                 & \text{otherwise},
+    \end{cases}
+  \]
+  and so
+  \[
+    \E{\widehat{\theta}}
+    =\int_0^\theta\!xnx^{n-1}/\theta^n\,\d{x}
+    =\frac{n}{n+1}\theta.
+  \]
+  Hence,
+  \[
+    \bias{\widehat{\theta}}
+    =\frac{n}{n+1}\theta-\theta=-\frac{\theta}{n+1}.
+  \]
+  Moreover,
+  \[
+    \E{\widehat{\theta}^2}
+    =\int_0^\theta\!x^2nx^{n-1}/\theta^n\,\d{x}
+    =\frac{n}{n+2}\theta^2,
+  \]
+  and therefore
+  \[
+    \var{\widehat{\theta}}
+    =\E{\widehat{\theta}^2}
+    -\E{\widehat{\theta}}^2
+    =\frac{n}{n+2}\theta^2
+    -\frac{n^2}{(n+1)^2}\theta^2
+    =\frac{n}{(n+1)^2(n+2)}\theta^2,
+  \]
+  \[
+    \se(\widehat{\theta})
+    =\frac{\theta}{n+1}\sqrt{\frac{n}{n+2}},
+  \]
+  and
+  \[
+    \mse{\widehat{\theta}}
+    =\left[\bias{\widehat{\theta}}\right]^2+\var{\widehat{\theta}}
+    =\frac{2\theta^2}{(n+1)(n+2)}.
+  \]
+\end{ex}
+
+\begin{ex}
+  Let $X_1,\ldots,X_n\sim\text{Uniform}(0,\theta)$ and let
+  $\widehat{\theta} = 2\overline{X}_n$. Then
+  \[
+    \E{\widehat{\theta}}
+    =\E{\frac{2}{n}\sum_{i=1}^n X_i}
+    =\frac{2}{n}\sum_{i=1}^n \E{X_i}
+    =\frac{2}{n}\cdot \frac{n\theta}{2}=\theta,
+  \]
+  and
+  \[
+    \bias{\widehat{\theta}}
+    =\E{\widehat{\theta}}-\theta
+    =0.
+  \]
+  Likewise,
+  \[
+    \var{\widehat{\theta}}
+    =\var{\frac{1}{n}\sum_{i=1}^n X_i}
+    =\frac{1}{n^2}\sum_{i=1}^n \var{X_i}
+    =\frac{n\theta^2}{12n^2}
+    =\frac{\theta^2}{12n},
+  \]
+  \[
+    \se(\widehat{\theta})
+    =\frac{\theta}{\sqrt{12 n}},
+  \]
+  and therefore
+  \[
+    \mse{\widehat{\theta}}
+    =\left[\bias{\widehat{\theta}}\right]^2+\var{\widehat{\theta}}
+    =\frac{\theta^2}{12n}.
+  \]
+\end{ex}

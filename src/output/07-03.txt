@@ -1,0 +1,2 @@
+> Standard normal coverage: 0.966
+> Standard Cauchy coverage: 0.959

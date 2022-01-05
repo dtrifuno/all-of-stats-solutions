@@ -1,0 +1,4 @@
+> Estimated coverages of 95% CIs: 
+>     Normal: 0.03
+>    Pivotal: 0.139
+> Percentile: 0.0

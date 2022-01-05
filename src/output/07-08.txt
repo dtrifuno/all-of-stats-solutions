@@ -1,0 +1,4 @@
+> The mean waiting time is approximately 70.9.
+> The standard error of this estimate is 0.8243.
+> A 90% CI for the mean waiting time value is given by [69.54, 72.25].
+> The median waiting time is approximately 76.0.

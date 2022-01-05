@@ -1,0 +1,1 @@
+> Smallest n with interval width <= 0.05: 2952

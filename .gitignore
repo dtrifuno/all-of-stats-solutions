@@ -1,3 +1,7 @@
+_minted-main/
+.ipynb_checkpoints/
+__pycache__/
+
 *.aux
 *.log
 *.pdf
@@ -6,4 +10,4 @@
 *.fls
 *.synctex*
 *.ipynb
-_minted-main/
+*-checkpoint.dat

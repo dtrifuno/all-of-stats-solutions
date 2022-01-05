@@ -1,0 +1,465 @@
+\chapter{Hypothesis Testing and p-values}
+
+\begin{ex}
+  Suppose that the true value of $\theta$ is $\theta_\star\neq \theta_0$. Then
+  \begin{align*}
+    W
+    =\frac{\thetahat-\theta_0}{\sehat}
+    =\frac{\thetahat-\theta_\star+\theta_\star-\theta_0}{\sehat}
+    =\frac{\thetahat-\theta_\star}{\sehat}-\frac{\theta_0-\theta_\star}{\sehat},
+  \end{align*}
+  and therefore
+  \begin{align*}
+    \P{|W|>z_{\alpha/2}}
+     & =\P{\frac{\thetahat-\theta_\star}{\sehat}-\frac{\theta_0-\theta_\star}{\sehat}>z_{\alpha/2}}
+    +\P{\frac{\thetahat-\theta_\star}{\sehat}-\frac{\theta_0-\theta_\star}{\sehat}<-z_{\alpha/2}}       \\
+     & =\P{\frac{\thetahat-\theta_\star}{\sehat}>\frac{\theta_0-\theta_\star}{\sehat} + z_{\alpha/2}}
+    +\P{\frac{\thetahat-\theta_\star}{\sehat}<\frac{\theta_0-\theta_\star}{\sehat}-z_{\alpha/2}}        \\
+     & =1-\P{\frac{\thetahat-\theta_\star}{\sehat}<\frac{\theta_0-\theta_\star}{\sehat} + z_{\alpha/2}}
+    +\P{\frac{\thetahat-\theta_\star}{\sehat}<\frac{\theta_0-\theta_\star}{\sehat}-z_{\alpha/2}},
+  \end{align*}
+  which, since $(\thetahat-\theta_\star)/\sehat \approx N(0, 1)$, implies that
+  \[
+    \P{|W|>z_{\alpha/2}}\approx
+    1-\Phi\left(\frac{\theta_0-\theta_\star}{\sehat} + z_{\alpha/2}\right)
+    +\Phi\left(\frac{\theta_0-\theta_\star}{\sehat}-z_{\alpha/2}\right).
+  \]
+\end{ex}
+
+\begin{ex}
+  By Theorem 10.12,
+  \[
+    p=\mathbb{P}_{\theta_0}{(T(X^n)\geq T(x^n))}=1-F(T(x^n)),
+  \]
+  where $T(X^n)\sim F$ under $H_0:\theta=\theta_0$. Therefore,
+  \[
+    \P{p<y}
+    =\P{1-F(T(Y^n))<y},
+  \]
+  where $T(Y^n)\sim F$ and therefore by Exercise 2.15,
+  $F(T(Y^n))\sim\text{Uniform}(0, 1)$. Finally, note that if
+  $U\sim\text{Uniform}(0,1)$ then $1-U\sim\text{Uniform}(0,1)$ as well, and that
+  therefore
+  \[
+    \P{p<y}=yI_{[0,1]}(y),
+  \]
+  the CDF of a $\text{Uniform}(0,1)$ distribution.
+\end{ex}
+
+\begin{ex}
+  Note that $\theta_0\not\in C$, where
+  \[
+    C=(\thetahat-\sehat \, z_{\alpha/2}, \thetahat+\sehat \, z_{\alpha/2}),
+  \]
+  if and only if
+  \[
+    \theta_0> \thetahat+\sehat\, z_{\alpha/2}\text{, or }
+    \theta_0< \thetahat-\sehat\, z_{\alpha/2}.
+  \]
+  This is equivalent to
+  \[
+    |\theta_0-\thetahat|> \sehat\, z_{\alpha/2},
+  \]
+  which is equivalent to
+  \[
+    \frac{|\thetahat-\theta_0|}{\sehat} > z_{\alpha/2},
+  \]
+  but this is precisely the size $\alpha$ Wald test.
+\end{ex}
+
+\begin{ex}
+  Note that
+  \[
+    p\text{-value}
+    =\inf\left\{\alpha \mid T(X^n)\geq c_\alpha\right\},
+  \]
+  where $\alpha=\sup_{\theta\in\Theta_0}\mathbb{P}_{\theta}(T(X^n)\geq
+    c_\alpha)$ is a decreasing function of $c_\alpha$, and that therefore,
+  having observed $x^n$, the smallest value of $\alpha$ will be obtained for
+  the largest $c_\alpha$ such that we still reject the null, $c_\alpha=T(x^n)$.
+  The size of the test for which we reject the null is then
+  \[
+    \sup_{\theta\in\Theta_0}\mathbb{P}_{\theta}(T(X^n)\geq T(x^n))
+  \]
+  and therefore
+  \[
+    p\text{-value}
+    =\sup_{\theta\in\Theta_0}\mathbb{P}_{\theta}(T(X^n)\geq T(x^n)),
+  \]
+  or, in the case where $\Theta_0=\{\theta_0\}$, the supremum is over only a
+  single element and therefore
+  \[
+    p\text{-value}
+    =\mathbb{P}_{\theta_0}(T(X^n)\geq T(x^n)).
+  \]
+\end{ex}
+
+% 5
+\begin{ex}
+  Let $X_1,\ldots,X_n\sim\text{Uniform}(0,\theta)$ and
+  $Y=\max\{X_1,\ldots,X_n\}$.
+  \begin{enumerate}[(a)]
+    \item We have
+          \begin{align*}
+            \beta(\theta_0)
+             & =\mathbb{P}_{\theta_0}(Y>c)                                              \\
+             & =1-\mathbb{P}_{\theta_0}(Y\leq c)                                        \\
+             & =1-\mathbb{P}_{\theta_0}(X_1\leq c)\cdots\mathbb{P}_{\theta'}(X_n\leq c) \\
+             & =1-(c/\theta_0)^n
+          \end{align*}
+          for $c\in[0,\theta_0]$.
+    \item Solving
+          \[
+            0.05=1-(c/\theta_0)^n
+          \]
+          for $c$ we get
+          \[
+            c=0.95^{1/n}\theta_0,
+          \]
+          or, substituting $0.5$ for $\theta_0$,
+          \[
+            c=0.5\cdot 0.95^{1/n}.
+          \]
+    \item We have
+          \[
+            p=1-(0.48/0.5)^{n},
+          \]
+          which implies that $p\approx 0.558$, which means that the test does
+          not provide any evidence against $H_0$.
+    \item Note that $Y=0.52$ is outside the range $[0,\theta_0]$, and therefore
+          $\mathbb{P}_{\theta_0}(Y>0.52)=0$. The $p$-value is therefore $0$, and
+          we can thus reject $H_0$ at any level.
+  \end{enumerate}
+\end{ex}
+
+\begin{ex}
+  Since we will need to construct a confidence interval, we will use the Wald
+  test for a Binomial distribution. Let $H_0: p=1/2$ and $H_1:p\neq 1/2$. By
+  Exercise 10.15, $\phat=X/n=922/1919$ with
+  $\sehat{\phat}=\sqrt{\phat(1-\phat)/n}$. The test statistic is
+  \[
+    \frac{|\phat-p_0|}{\sehat(\phat)}
+  \]
+  and thus by Theorem 10.13 the $p$-value is given by
+  \[
+    \P{|Z|>\frac{|\phat-p_0|}{\sqrt{\phat(1-\phat)/n}}}
+    =2\Phi\left(
+    -\frac{|\phat-p_0|}{\sqrt{\phat(1-\phat)/n}}
+    \right).
+  \]
+  \inputminted{python}{../code/10-06.py}
+  \inputminted{text}{../output/10-06.txt}
+
+  The test indicates weak evidence against $H_0$.
+\end{ex}
+
+\begin{ex}~
+  \begin{enumerate}[(a)]
+    \item Let $X_1$ be the distribution of the proportion of three-letter words
+          in the Twain essays, and let $X_2$ be the distribution in the
+          Snodgrass essays. Recall from Example 10.8 that the plug-in estimator
+          for a difference of means $d=\mu_1-\mu_2$ is given by the difference
+          of the plug-in estimators of the means, the sample averages. Thus,
+          \[
+            \widehat{d}=\Xbar_1-\Xbar_2,
+          \]
+          with
+          \[
+            \sehat(\widehat{d})
+            =\sqrt{(\sehat(\muhat_1))^2+(\sehat(\muhat_2))^2},
+          \]
+          where
+          \[
+            \sehat(\muhat_j)=\frac{1}{\sqrt{n_j}}
+            \sqrt{\frac{1}{n_j}\sum_{i=1}^{n_j}(X_{j,i}-\Xbar_j)^2}.
+          \]
+
+          Note that $H_0: d=0$, and therefore the size $\alpha$ Wald test for
+          this hypothesis is obtained by checking whether
+          \[
+            \frac{\left|\Xbar_1-\Xbar_2\right|}{
+              \sqrt{(\sehat(\Xbar_1))^2+(\sehat(\Xbar_2))^2}}
+            > z_{\alpha/2}.
+          \]
+
+          \inputminted{python}{../code/10-07.py}
+          \inputminted{text}{../output/10-07.txt}
+
+          We may conclude that there is very strong evidence to reject the null
+          hypothesis, i.e.\ that the proportion of three-letter words is
+          similarly distributed in both sets of essays.
+    \item We obtain the same result from the permutation test: we have very
+          strong evidence that the samples comes from sets with different means.
+  \end{enumerate}
+\end{ex}
+
+\begin{ex}
+  Let $X_1,\ldots,X_n\sim N(\theta, 1)$. We are testing $H_0:\theta=0$ versus
+  $H_1:\theta=1$, using the rejection region $R=\{x^n \mid T(x^n)>c\}$ where
+  $T(x^n)=\Xbar$.
+  \begin{enumerate}[(a)]
+    \item Note that
+          \begin{align*}
+            \alpha
+             & = \mathbb{P}_{\theta=0}\left(\Xbar > c \right)                 \\
+             & = \mathbb{P}_{\theta=0}\left(\sqrt{n}\Xbar > \sqrt{n}c \right) \\
+             & = \mathbb{P}_{\theta=0}\left(Z > \sqrt{n}c \right)             \\
+             & = 1-\Phi(\sqrt{n}c),
+          \end{align*}
+          and that therefore $c=z_{\alpha}/\sqrt{n}$.
+    \item We have
+          \begin{align*}
+            \beta(1)
+             & = \mathbb{P}_{\theta=1}\left(\Xbar > c \right)                         \\
+             & = \mathbb{P}_{\theta=1}\left(\Xbar-1 > c-1 \right)                     \\
+             & = \mathbb{P}_{\theta=1}\left(\sqrt{n}(\Xbar-1) > \sqrt{n}(c-1) \right) \\
+             & = \mathbb{P}_{\theta=1}\left(z > \sqrt{n}(c-1) \right)                 \\
+             & = 1-\Phi(\sqrt{n}({c-1}))                                              \\
+             & = 1-\Phi(z_\alpha-\sqrt{n}).
+          \end{align*}
+    \item Note that
+          \begin{align*}
+            \lim_{n\to\infty}\beta_n(1)
+             & =\lim_{n\to\infty}[1-\Phi(z_\alpha-\sqrt{n})] \\
+             & =1-\lim_{u\to-\infty}\Phi(u)                  \\
+             & =1.
+          \end{align*}
+  \end{enumerate}
+\end{ex}
+
+\begin{ex}
+  Note that
+  \begin{align*}
+    \beta(\theta_1)
+     & =\mathbb{P}_{\theta_1}\left(\left|\frac{\thetahat-\theta_0}{\sehat}\right| > z_{\alpha/2} \right) \\
+     & =\mathbb{P}_{\theta_1}\left(\frac{\thetahat-\theta_0}{\sehat} > z_{\alpha/2} \right)
+    +\mathbb{P}_{\theta_1}\left(\frac{\thetahat-\theta_0}{\sehat} < -z_{\alpha/2} \right)                \\
+     & =1
+    -\mathbb{P}_{\theta_1}\left(\frac{\thetahat-\theta_0}{\sehat} < z_{\alpha/2} \right)
+    +\mathbb{P}_{\theta_1}\left(\frac{\thetahat-\theta_0}{\sehat} < -z_{\alpha/2} \right)                \\
+     & =1
+    -\mathbb{P}_{\theta_1}
+    \left(\frac{\thetahat-\theta_1}{\sehat}
+    +\frac{\theta_1-\theta_0}{\sehat}
+    < z_{\alpha/2} \right)
+    +\mathbb{P}_{\theta_1}\left(
+    \frac{\thetahat-\theta_1}{\sehat}
+    +\frac{\theta_1-\theta_0}{\sehat}
+    < -z_{\alpha/2} \right)                                                                              \\
+     & =1
+    -\mathbb{P}_{\theta_1}
+    \left(\frac{\thetahat-\theta_1}{\sehat}
+    < z_{\alpha/2}
+    -\frac{\theta_1-\theta_0}{\sehat}
+    \right)
+    +\mathbb{P}_{\theta_1}\left(
+    \frac{\thetahat-\theta_1}{\sehat}
+    < -z_{\alpha/2}
+    -\frac{\theta_1-\theta_0}{\sehat}
+    \right)                                                                                              \\
+     & =1-\lim_{n\to\infty}\Phi\left(z_{\alpha/2}-\sqrt{nI(\thetahat)}(\theta_1-\theta_0)\right)
+    +\lim_{n\to\infty}\Phi\left(-z_{\alpha/2}-\sqrt{nI(\thetahat)}(\theta_1-\theta_0)\right),
+  \end{align*}
+  or, since $\theta_1>\theta_0$,
+  \[
+    \beta(\theta_1)
+    = 1 - \lim_{u\to-\infty}\Phi(u)+\lim_{u\to-\infty}\Phi(u)
+    = 1.
+  \]
+\end{ex}
+
+% 10
+\begin{ex}
+  We will use the Wald test to check whether there is a difference between the
+  proportion of deaths before the Chinese Harvest Moon Festival between the two
+  groups.
+  \inputminted{python}{../code/10-10.py}
+  \inputminted{text}{../output/10-10.txt}
+
+  We find that there is little to no evidence against $H_0$.
+\end{ex}
+
+\begin{ex}~
+  \begin{enumerate}[(a)]
+    \item
+          \inputminted{python}{../code/10-11.py}
+          \inputminted{text}{../output/10-11.txt}
+          Since only the $p$-value for Chlorpromazine is less than $0.05$, the
+          only null hypothesis that we may reject is that the placebo is
+          similarly effective as Chlorpromazine.
+    \item Our finding remains statistically significant at the $0.05$ level
+          under both the Bonferroni or the Benjamini-Hochberg multiple
+          testing method corrections.
+  \end{enumerate}
+\end{ex}
+
+\begin{ex}~
+  \begin{enumerate}[(a)]
+    \item Let $X_1,\ldots,X_n\sim\text{Poisson}(\lambda)$. We begin by computing
+          the maximum likelihood estimator for $\lambda$. Recall that then
+          \[
+            f(x;\lambda)=e^{-\lambda}\frac{\lambda^x}{x!},
+          \]
+          and that therefore
+          \[
+            \ell_n(\lambda)=\sum_{i=1}^n-\lambda+X_i\log(\lambda)+\log(X_i!).
+          \]
+          Hence,
+          \[
+            \frac{\d\ell_n(\lambda)}{\d\lambda}
+            =\sum_{i=1}^n\left[-1+\frac{X_i}{\lambda}\right]
+            =\frac{n(\Xbar-\lambda)}{\lambda}
+            \text{ implies }
+            \lambda=\Xbar,
+          \]
+          and it is clear by the second derivative test that this is a maximum.
+          Hence, $\widehat{\lambda}=\Xbar$, and
+          $\sehat(\widehat{\lambda})=\sqrt{\Xbar/n}$.
+
+          Let $H_0:\lambda=\lambda_0$. Then, the size $\alpha$ Wald test is
+          given by rejecting $H_0$ when
+          \[
+            \frac{\sqrt{n}|\Xbar-\lambda_0|}{\sqrt{\Xbar}}>z_{\alpha/2}.
+          \]
+    \item
+          \inputminted{python}{../code/10-12.py}
+          \inputminted{text}{../output/10-12.txt}
+  \end{enumerate}
+\end{ex}
+
+\begin{ex}
+  Let $X_1,\ldots, X_n\sim N(\mu, \sigma^2)$. Recall from Example 9.11 that then
+  \[
+    \ell(\mu, \sigma)
+    =-n\log\sigma -\frac{nS^2}{2\sigma^2}-\frac{n(\Xbar-\mu)^2}{2\sigma^2}.
+  \]
+  Therefore,
+  \[
+    \frac{\pd \ell(\mu, \sigma)}{\pd \mu}
+    =\frac{n(\Xbar-\mu)}{\sigma^2}
+    \text{ implies }
+    \muhat = \overline{X},
+  \]
+  and
+  \[
+    \frac{\pd \ell(\Xbar, \sigma)}{\pd \sigma}=-\frac{n}{\sigma}+\frac{nS^2}{\sigma^3}
+    \text{ implies }
+    \sigmahat = S.
+  \]
+  We have $\Theta_0=\{(\mu, \sigma) \mid \mu=\mu_0\}$ and so for the likelihood
+  ratio test we have
+  \begin{align*}
+    \lambda
+     & = 2\log\left(\frac{\sup_{\theta\in\Theta}\L(\theta)}{\sup_{\theta_0\in\Theta_0}\L(\theta_0)} \right) \\
+     & =2\ell(\Xbar, S)-2\ell(\mu_0, S)                                                                     \\
+     & =\frac{n(\Xbar-\mu_0)^2}{S^2},
+  \end{align*}
+  where, under $H_0$, we expect $\lambda\rightsquigarrow \chi^2$, and
+  therefore have $p$-value
+  \[
+    \P{\chi^2>\frac{n(\Xbar-\mu_0)^2}{S^2}}.
+  \]
+
+  Recall that $\se(\muhat)=\sigma/\sqrt{n}$, and that therefore the $p$-value
+  for the Wald test is given by
+  \[
+    \P{|Z|>\frac{\sqrt{n}|\Xbar -\mu_0|}{S}},
+  \]
+  or, by squaring both sides,
+  \[
+    \P{Z^2>\frac{n(\Xbar -\mu_0)^2}{S^2}},
+  \]
+  which is equivalent to the likelihood-ratio test since $Z^2$ has a chi-squared
+  distribution.
+\end{ex}
+
+\begin{ex}
+  Let $X_1,\ldots, X_n\sim N(\mu, \sigma^2)$. Recall that
+  \[
+    \ell(\mu, \sigma)=-n\log\sigma -\frac{nS^2}{2\sigma^2}-\frac{n(\Xbar-\mu)^2}{2\sigma^2},
+  \]
+  and by an identical argument to the previous problem,
+  \[
+    \muhat=\Xbar\text{ and }\sigmahat=S.
+  \]
+  We then have $\Theta_0=\{(\mu, \sigma) \mid \sigma=\sigma_0\}$, and therefore
+  \begin{align*}
+    \lambda
+     & =2\log\left(\frac{\sup_{\theta\in\Theta}\L(\theta)}{\sup_{\theta_0\in\Theta_0}\L(\theta_0)} \right) \\
+     & =2\ell(\Xbar, S)-2\ell(\Xbar, \sigma_0)                                                             \\
+     & = n\left[2\log\frac{\sigma_0}{S}+\frac{S^2}{\sigma_0^2}-1\right]                                    \\
+     & = 2n\log\frac{\sigma_0}{S}+\frac{n(S^2-\sigma_0^2)}{\sigma_0^2},
+  \end{align*}
+  where, under $H_0$, we expect $\lambda\rightsquigarrow \chi^2$, and
+  therefore have $p$-value
+  \[
+    \P{\chi^2>
+      2n\log\frac{\sigma_0}{S}+\frac{n(S^2-\sigma_0^2)}{\sigma_0^2}
+    }.
+  \]
+
+  Recall that $\se(\sigmahat)=\sigma/\sqrt{2n}$, and that therefore the
+  $p$-value for the Wald test is given by
+  \[
+    \P{|Z|>\frac{\sqrt{2n}|S -\sigma_0|}{S}},
+  \]
+  or,
+  \[
+    \P{Z^2>\frac{2n(S -\sigma_0)^2}{S^2}}.
+  \]
+\end{ex}
+
+% 15
+\begin{ex}
+  Let $X \sim \text{Binomial}(n, p)$. Note that then
+  \[
+    \ell(n, p)=\log\binom{n}{X}+X\log{p}+(n-X)\log(1-p),
+  \]
+  and therefore
+  \[
+    \frac{\pd\ell(n, p)}{\pd{p}}
+    =\frac{X}{p}-\frac{n-X}{1-p}
+    \text{ implies }
+    \phat =X/n.
+  \]
+
+  We have $\Theta_0=\{p_0\}$. Therefore,
+  \[
+    \lambda
+    =2\log\left(\frac{\sup_{\theta\in\Theta}\L(\theta)}{\sup_{\theta_0\in\Theta_0}\L(\theta_0)} \right)
+    =2\ell(n, \phat)-2\ell(n, p_0)
+    =2X\log\left(\frac{\phat}{p_0}\right)+2(n-X)\log\left(\frac{1-\phat}{1-p_0}\right),
+  \]
+  where, under $H_0$, we expect $\lambda\rightsquigarrow \chi^2$.
+
+  Note that by Exercise 9.7, $\sehat(\phat)=\sqrt{\phat(1-\phat)/n}$, and
+  therefore the $p$-value of the Wald test is given by
+  \[
+    \P{|Z|>\frac{\sqrt{n}|\phat-p_0|}{\sqrt{\phat(1-\phat)}}}.
+  \]
+\end{ex}
+
+\begin{ex}
+  Let $\ell(\theta)$ be a log-likelihood. Note that then the second degree
+  Taylor polynomial expansion of $\ell$ around the MLE $\thetahat$ is given by
+  \[
+    \ell(\theta)
+    \approx
+    \ell(\thetahat)+\ell'(\thetahat)(\theta-\thetahat)
+    +\frac{1}{2}\ell''(\thetahat)(\theta-\thetahat)^2,
+  \]
+  and therefore,
+  \[
+    \lambda
+    =2\ell(\thetahat)-2\ell(\theta_0)
+    \approx -\ell''(\thetahat)(\thetahat-\theta_0)^2
+    = I(\thetahat)(\thetahat-\theta_0)^2
+    = \frac{(\thetahat-\theta_0)^2}{\sehat^2(\thetahat)},
+  \]
+  however, this is precisely $W^2$.
+
+  To complete the proof and show that $\frac{W^2}{\lambda}\xrightarrow{P} 1$, we
+  need to be able to show that the error of our quadratic approximation to the
+  log-likelihood decreases with sample size, but this is not true in general,
+  and it does not look like we have any of the relevant results in the book.
+\end{ex}

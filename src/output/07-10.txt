@@ -1,0 +1,2 @@
+> The mean waiting time is approximately 277.4.
+> A 95% CI for this value is given by [5.314, 549.5].

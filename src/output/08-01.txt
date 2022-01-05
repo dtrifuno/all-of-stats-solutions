@@ -1,0 +1,5 @@
+> The plug-in estimate for the correlation is 0.77551.
+> Bootstrap approximation for standard error is 0.1359.
+> 95% CI by normal method is [0.5091, 1.042]
+> 95% CI by pivotal method is [0.5906, 1.093]
+> 95% CI by percentile method is [0.4584, 0.9604]

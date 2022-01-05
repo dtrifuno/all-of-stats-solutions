@@ -1,0 +1,9 @@
+> Average length of 95% CIs: 
+>     Normal: 1.287
+>    Pivotal: 1.24
+> Percentile: 1.24
+> 
+> Coverages of 95% CIs: 
+>     Normal: 0.96
+>    Pivotal: 0.85
+> Percentile: 0.96

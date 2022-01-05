@@ -1,0 +1,2 @@
+> F(4.9) - F(4.3) is approximately 0.526.
+> A 95% CI for this value is given by [0.4951, 0.5569].

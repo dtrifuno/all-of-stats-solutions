@@ -1,0 +1,4 @@
+> Flips  Expected  Actual
+>    10         3       2
+>   100        30      29
+>  1000       300     308

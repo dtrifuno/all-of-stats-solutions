@@ -1,0 +1,5 @@
+>                            p_hat      odds         p      bf_p  bh_reject
+> Chlorpromazine          0.346667  2.423077  0.005703  0.022814       True
+> Dimenhydrinate          0.611765  0.815934  0.099639  2.080929      False
+> Pentobarbital (100 mg)  0.522388  1.175510  0.520232  2.506656      False
+> Pentobarbital (150 mg)  0.435294  1.667954  0.626664  0.398557      False

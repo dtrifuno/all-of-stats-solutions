@@ -9,5 +9,6 @@
   "ltex.latex.environments": {
     "minted": "ignore"
   },
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "80"]
 }

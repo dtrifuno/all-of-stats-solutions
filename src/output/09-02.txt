@@ -1,0 +1,2 @@
+> The MSE for the MLE estimate is 0.0152.
+> The MSE for the plug-in estimator is 0.0333.

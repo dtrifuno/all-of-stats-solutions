@@ -1,8 +1,13 @@
-Seaborn
 integrand
 Fubini
 quadratically
 Chebyshev
 Hoeffding
 summands
-Functionals
+functionals
+equivariance
+MLE
+Chlorpromazine
+Benjamini-Hochberg
+Bonferroni
+supremum
