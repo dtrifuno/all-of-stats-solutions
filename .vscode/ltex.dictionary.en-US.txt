@@ -11,3 +11,5 @@ Chlorpromazine
 Benjamini-Hochberg
 Bonferroni
 supremum
+Jeffreys
+minimax

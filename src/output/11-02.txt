@@ -1,0 +1,2 @@
+> 95% posterior interval for mu is given by [4.754, 5.146]
+> 95% posterior interval for theta is given by [116.004, 171.681]

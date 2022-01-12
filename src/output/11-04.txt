@@ -1,0 +1,15 @@
+> MLE for tau is 0.2.
+> Standard error for tau is 0.08944.
+> 90% CI for tau is [0.05288, 0.3471].
+> 
+> 90% parametric bootstrap CI for tau is [0.06, 0.34].
+> 
+> The posterior mean for tau is 0.1953.
+> 90% posterior bootstrap CI for tau is [0.04632, 0.3393].
+> 
+> MLE for psi is 0.9808.
+> Standard error for psi is 0.2041.
+> 90% CI for psi is [0.6451, 1.317].
+> 
+> The posterior mean for psi is 0.9693.
+> 90% posterior bootstrap CI for psi is [0.2244, 1.737].
