@@ -1,0 +1,32 @@
+>             Covariates        Cp     BIC
+> 0       const HP SP WT   1140.39  458.13
+> 1   const VOL HP SP WT   1160.81  462.04
+> 2      const VOL SP WT   1443.80  479.24
+> 3          const SP WT   1463.08  477.60
+> 4      const VOL HP WT   1507.48  483.05
+> 5          const HP WT   1510.68  480.38
+> 6             const WT   1519.37  477.97
+> 7         const VOL WT   1542.17  482.16
+> 8         VOL HP SP WT   2026.44  508.90
+> 9             HP SP WT   2031.88  505.85
+> 10           VOL HP SP   2142.40  510.37
+> 11     const VOL HP SP   2147.89  513.93
+> 12        const VOL HP   2354.82  518.41
+> 13         const HP SP   2436.58  521.30
+> 14               HP SP   2460.00  518.62
+> 15        const VOL SP   3056.60  540.45
+> 16            const HP   3102.81  538.03
+> 17            const SP   4318.23  565.54
+> 18           VOL SP WT   5721.04  592.88
+> 19           const VOL   7059.22  606.24
+> 20               SP WT   8051.08  617.10
+> 21               const   8134.15  613.81
+> 22              VOL SP  13760.64  661.27
+> 23                  SP  14131.03  659.21
+> 24           VOL HP WT  15970.66  677.80
+> 25              VOL HP  15990.99  673.64
+> 26              VOL WT  16327.68  675.35
+> 27                 VOL  16827.34  673.55
+> 28               HP WT  20205.35  692.88
+> 29                  WT  25921.82  709.03
+> 30                  HP  41864.46  748.37

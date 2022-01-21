@@ -1,0 +1,4 @@
+> Best forward stepwise model covariates: const SP WT HP
+> Best forward stepwise model Mallow Cp: 1140.39
+> Best backward stepwise model covariates: const SP WT HP
+> Best backward stepwise model Mallow Cp: 1140.39

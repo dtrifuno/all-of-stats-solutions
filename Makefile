@@ -1,4 +1,4 @@
-NAME=all-of-stats-solns
+NAME=all_of_stats_solns
 SRC_DIR=src
 TEX_DIR=src/tex
 CODEDIR=src/code

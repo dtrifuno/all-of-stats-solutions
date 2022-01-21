@@ -1,0 +1,25 @@
+>                             OLS Regression Results                            
+> ==============================================================================
+> Dep. Variable:                LOG_MPG   R-squared:                       0.734
+> Model:                            OLS   Adj. R-squared:                  0.731
+> Method:                 Least Squares   F-statistic:                     221.2
+> Date:                Tue, 18 Jan 2022   Prob (F-statistic):           9.62e-25
+> Time:                        15:52:44   Log-Likelihood:                 36.047
+> No. Observations:                  82   AIC:                            -68.09
+> Df Residuals:                      80   BIC:                            -63.28
+> Df Model:                           1                                         
+> Covariance Type:            nonrobust                                         
+> ==============================================================================
+>                  coef    std err          t      P>|t|      [0.025      0.975]
+> ------------------------------------------------------------------------------
+> const          4.0132      0.040    100.021      0.000       3.933       4.093
+> HP            -0.0046      0.000    -14.873      0.000      -0.005      -0.004
+> ==============================================================================
+> Omnibus:                        4.454   Durbin-Watson:                   1.026
+> Prob(Omnibus):                  0.108   Jarque-Bera (JB):                3.827
+> Skew:                           0.516   Prob(JB):                        0.148
+> Kurtosis:                       3.236   Cond. No.                         299.
+> ==============================================================================
+> 
+> Notes:
+> [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
