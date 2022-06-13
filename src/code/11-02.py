@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as stats
 
+np.set_printoptions(precision=2)
+
 # (a)
 n = 100
 rng = np.random.default_rng(42)
@@ -10,9 +12,9 @@ mu = 5
 data = rng.normal(mu, 1, size=n)
 
 # (b)
-mu_lim = (3, 7)
+mu_lims = (3, 7)
 k = 5000
-mus = np.linspace(*mu_lim, k)
+mus = np.linspace(*mu_lims, k)
 likelihood = np.ones(k)
 for x in data:
     likelihood *= stats.norm.pdf(x, loc=mus)
@@ -29,7 +31,7 @@ fig_b.savefig("11-02b.png", bbox_inches="tight")
 drawn_mus = rng.choice(mus, size=1000, p=mu_density)
 fig_c, ax_c = plt.subplots()
 ax_c.set(xlabel="Mu", ylabel="Frequency")
-ax_c.hist(drawn_mus, bins=150, range=mu_lim)
+ax_c.hist(drawn_mus, bins=150, range=mu_lims)
 fig_c.savefig("11-02c.png", bbox_inches="tight")
 
 # (d)
@@ -55,19 +57,13 @@ mu_cdf = mu_density.cumsum()
 alpha = 0.05
 mu_left_idx = np.argmax(mu_cdf >= alpha / 2)
 mu_right_idx = np.argmax(mu_cdf >= 1 - alpha / 2)
-mu_pi = (mus[mu_left_idx], mus[mu_right_idx])
-print(
-    "95% posterior interval for mu is given by",
-    f"[{mu_pi[0]:.3f}, {mu_pi[1]:.3f}]",
-)
+mu_pi = np.array([mus[mu_left_idx], mus[mu_right_idx]])
+print(f"95% posterior interval for mu is given by {mu_pi}.")
 
 # (f)
 theta_cdf = theta_density.cumsum()
 alpha = 0.05
 theta_left_idx = np.argmax(theta_cdf >= alpha / 2)
 theta_right_idx = np.argmax(theta_cdf >= 1 - alpha / 2)
-theta_pi = (thetas[theta_left_idx], thetas[theta_right_idx])
-print(
-    "95% posterior interval for theta is given by",
-    f"[{theta_pi[0]:.3f}, {theta_pi[1]:.3f}]",
-)
+theta_pi = np.array([thetas[theta_left_idx], thetas[theta_right_idx]])
+print(f"95% posterior interval for theta is given by {theta_pi}.")

@@ -15,12 +15,8 @@ for i, n in enumerate(ns):
     ax.plot(xs, wald_p, label="Wald p-value")
     for b in bs:
         t = np.sqrt(b ** 2 * n + 1)
-        bayes_p = t / (
-            t + np.exp(xs ** 2 * b ** 2 * n ** 2 / (2 * (b ** 2 * n + 1)))
-        )
-        ax.plot(
-            xs, bayes_p, label=f"P(H_0|x), b={b}", lw=1.2, linestyle="dashed"
-        )
+        bayes_p = t / (t + np.exp(xs ** 2 * b ** 2 * n ** 2 / (2 * t ** 2)))
+        ax.plot(xs, bayes_p, "--", label=f"P(H_0|x), b={b}", lw=1.2)
     ax.legend()
 
 fig.savefig("11-08b.png", bbox_inches="tight")

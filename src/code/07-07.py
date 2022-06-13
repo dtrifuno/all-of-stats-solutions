@@ -8,6 +8,8 @@ import scipy.stats as stats
 # Check Exercise 7.3 for definition of create_ecdf
 from create_ecdf import create_ecdf
 
+np.set_printoptions(precision=3)
+
 src_dir = pathlib.Path(__file__).resolve().parent.parent
 dat_path = src_dir.joinpath("data", "fijiquakes.dat")
 
@@ -34,9 +36,8 @@ b = 4.9
 a = 4.3
 theta_hat = ecdf(b) - ecdf(a)
 theta_se = np.sqrt(theta_hat * (1 - theta_hat) / magnitudes.size)
-z = stats.norm.ppf(1 - alpha / 2)
-l = theta_hat - z * theta_se
-u = theta_hat + z * theta_se
+z_alpha = stats.norm.ppf(1 - alpha / 2)
+ci = theta_hat + z_alpha * theta_se * np.array([-1, 1])
 
 print(f"F({b}) - F({a}) is approximately {theta_hat}.")
-print(f"A 95% CI for this value is given by [{l:.4}, {u:.4}].")
+print(f"A 95% CI for this value is given by {ci}.")

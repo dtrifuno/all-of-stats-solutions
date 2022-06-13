@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import scipy.stats as stats
 
+np.set_printoptions(precision=3)
+
 src_dir = pathlib.Path(__file__).resolve().parent.parent
 dat_path = src_dir.joinpath("data", "faithful.dat")
 
@@ -16,13 +18,9 @@ print(f"The mean waiting time is approximately {mean_waiting_time:.4}.")
 mwt_se = waiting_times.std() / np.sqrt(waiting_times.size)
 print(f"The standard error of this estimate is {mwt_se:.4}.")
 alpha = 0.1
-z = stats.norm.ppf(1 - alpha / 2)
-mwt_lower_bound = mean_waiting_time - z * mwt_se
-mwt_upper_bound = mean_waiting_time + z * mwt_se
-print(
-    "A 90% CI for the mean waiting time value is given by",
-    f"[{mwt_lower_bound:.4}, {mwt_upper_bound:.4}].",
-)
+z_alpha = stats.norm.ppf(1 - alpha / 2)
+mwt_ci = mean_waiting_time + z_alpha * mwt_se * np.array([-1, 1])
+print(f"A 90% CI for the mean waiting time value is given by {mwt_ci}.")
 
 median_waiting_time = waiting_times.median()
 print(f"The median waiting time is approximately {median_waiting_time:.4}.")

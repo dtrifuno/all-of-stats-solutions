@@ -14,6 +14,7 @@ def sample_corr_plugin(ys, zs):
 
 
 rng = np.random.default_rng(42)
+np.set_printoptions(precision=4)
 
 b = 5000
 lsat = np.array(
@@ -41,10 +42,8 @@ est_corr_se = bootstrap_corrs.std()
 print(f"The plug-in estimate for the correlation is {est_corr:.5}.")
 print(f"Bootstrap approximation for standard error is {est_corr_se:.4}.")
 normal_ci = create_normal_ci(est_corr, bootstrap_corrs)
-print(f"95% CI by normal method is [{normal_ci[0]:.4}, {normal_ci[1]:.4}]")
+print(f"95% CI by the normal method is {normal_ci}.")
 pivotal_ci = create_pivotal_ci(est_corr, bootstrap_corrs)
-print(f"95% CI by pivotal method is [{pivotal_ci[0]:.4}, {pivotal_ci[1]:.4}]")
+print(f"95% CI by the pivotal method is {pivotal_ci}.")
 percent_ci = create_percentile_ci(bootstrap_corrs)
-print(
-    f"95% CI by percentile method is [{percent_ci[0]:.4}, {percent_ci[1]:.4}]"
-)
+print(f"95% CI by the percentile method is {percent_ci}.")

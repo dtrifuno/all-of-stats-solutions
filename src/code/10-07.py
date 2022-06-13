@@ -1,6 +1,8 @@
 import numpy as np
 import scipy.stats as stats
 
+np.set_printoptions(precision=3)
+
 twain_data_str = ".225 .262 .217 .240 .230 .229 .235 .217"
 snodgrass_data_str = ".209 .205 .196 .210 .202 .207 .224 .223 .220 .201"
 twain_data = np.array([float(x) for x in twain_data_str.split()])
@@ -17,13 +19,10 @@ diff_se = np.sqrt(
 
 alpha = 0.05
 z_alpha = stats.norm.ppf(1 - alpha / 2)
-ci = (diff_hat - z_alpha * diff_se, diff_hat + z_alpha * diff_se)
+ci = diff_hat + z_alpha * diff_se * np.array([-1, 1])
 w = np.abs(diff_hat - 0) / diff_se
 p_value = 2 * stats.norm.cdf(-w)
-print(
-    "A 95% CI for the difference of means is given by",
-    f"[{ci[0]:.3}, {ci[1]:.3}].",
-)
+print(f"A 95% CI for the difference of means is given by {ci}.")
 print(f"The p-value for the Wald test is {p_value:.5f}.")
 
 

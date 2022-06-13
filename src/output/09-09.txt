@@ -1,6 +1,6 @@
 > Delta method se: 10.74
-> Delta method 95% CI: [110.4, 152.5]
+> Delta method 95% CI: [110.42 152.51]
 > Nonparametric bootstrap method se: 10.74
-> Nonparametric bootstrap method 95% CI: [111.8, 153.9]
+> Nonparametric bootstrap method 95% CI: [111.82 153.87]
 > Parametric bootstrap method se: 13.29
-> Parametric bootstrap method 95% CI: [108.3, 160.4]
+> Parametric bootstrap method 95% CI: [108.31 160.35]

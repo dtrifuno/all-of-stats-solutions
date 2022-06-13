@@ -1,6 +1,8 @@
 import numpy as np
 import scipy.stats as stats
 
+np.set_printoptions(precision=4)
+
 x = 922
 n = 1919
 p_hat = x / n
@@ -11,5 +13,5 @@ p_value = 2 * stats.norm.cdf(-w)
 print(f"The p-value is {p_value:.4}.")
 
 z_alpha = stats.norm.ppf(1 - 0.05 / 2)
-ci = (p_hat - z_alpha * se_hat, p_hat + z_alpha * se_hat)
-print(f"A 95% CI for p is [{ci[0]:.4}, {ci[1]:.4}].")
+ci = p_hat + z_alpha * se_hat * np.array([-1, 1])
+print(f"A 95% CI for p is {ci}.")

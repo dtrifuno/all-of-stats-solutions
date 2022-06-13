@@ -1,0 +1,2 @@
+> Coverage of the 95% Fisher method CI for rho: 0.949
+> Coverage of the 95% parametric bootstrap CI for rho: 0.942

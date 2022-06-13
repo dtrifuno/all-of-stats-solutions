@@ -9,7 +9,7 @@ def generate_coin_flips(size=1000, p_heads=0.5, seed=42):
 
 
 def plot_coin_flips(number_of_flips, p_heads):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(7, 4.3))
 
     flips = generate_coin_flips(number_of_flips, p_heads)
     proportion = np.cumsum(flips == "H") / np.arange(1, number_of_flips + 1)

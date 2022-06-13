@@ -5,6 +5,7 @@ import scipy.stats as stats
 from bootstrap import create_percentile_ci
 
 rng = np.random.default_rng(42)
+np.set_printoptions(precision=3)
 
 b = 10000
 n = 100
@@ -18,7 +19,7 @@ est_se_theta = bootstrap_thetas.std()
 percent_ci = create_percentile_ci(bootstrap_thetas)
 print(f"The estimate for theta is {est_theta:.4}.")
 print(f"The estimated se for theta is {est_se_theta:.4}.")
-print(f"A 95% CI for theta is [{percent_ci[0]:.4}, {percent_ci[1]:.4}].")
+print(f"A 95% CI for theta is {percent_ci}.")
 
 x_min = 0.1
 x_max = 600

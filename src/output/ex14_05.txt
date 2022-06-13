@@ -1,0 +1,11 @@
+> Estimated mean: 
+> [3.1321 7.9985] 
+> 
+> Estimated covariance matrix: 
+> [[1.1502 1.22  ]
+>  [1.22   2.1096]] 
+> 
+> True correlation: 0.7071
+> Sample correlation: 0.7911
+> Fisher method 95% CI for rho: [0.7041 0.8547].
+> Parametric bootstrap 95% CI for rho: [0.7036 0.8586].

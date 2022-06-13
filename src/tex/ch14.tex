@@ -1,19 +1,46 @@
 \chapter{Multivariate Models}
 
 \begin{ex}
+  Theorem 14.1 is identical to Lemma 3.21, which we proved in Exercise 3.20.
 \end{ex}
 
 \begin{ex}
+  Let $X\sim\text{Multinomial}(n, p)$. Recall that then
+  \[
+    f(x)=\frac{n!}{x_1!x_2!\cdots (n-\sum_{i=1}^{k-1}x_i)!}p_1^{x_1}p_2^{x_2}\ldots (1-\sum_{i=1}^{k-1}p_i)^{n-\sum_{i=1}^{k-1}x_i},
+  \]
+  and that therefore
+  \[
+    \ell(p)
+    =\log{n!}
+    +\sum_{i=1}^{k-1}(x_i\log{p_i} - \log{x_i!})
+    +\left(n-\sum_{i=1}^{k-1}x_i\right)\log\left(1-\sum_{i=1}^{k-1}p_i\right)
+    -\log\left(n-\sum_{i=1}^{k-1}x_i\right)!
+  \]
+  \[
+    \frac{\pd \ell}{\pd p_i}=\frac{x_i}{p_i},\quad
+    H_{ii}=\frac{\pd^2 \ell}{\pd p_i^2}=-\frac{x_i}{p^2_i},\quad
+    H_{ij}=\frac{\pd^2 \ell}{\pd p_i\pd p_j}=0,
+  \]
+  \[
+    \E{H_{ii}}=-\E{\frac{x_i}{p^2_i}}=\frac{np_i}{p_i^2}=\frac{n}{p_i}.
+  \]
 \end{ex}
 
-\begin{ex}
+\begin{ex}~
+  \inputminted{python}{../code/ex14_03.py}
 \end{ex}
 
-\begin{ex}
+\begin{ex}~
+  \inputminted{python}{../code/ex14_04.py}
 \end{ex}
 
-\begin{ex}
+\begin{ex}~
+  \inputminted{python}{../code/ex14_05.py}
+  \inputminted{text}{../output/ex14_05.txt}
 \end{ex}
 
-\begin{ex}
+\begin{ex}~
+  \inputminted{python}{../code/ex14_06.py}
+  \inputminted{text}{../output/ex14_06.txt}
 \end{ex}
